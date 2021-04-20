@@ -1,0 +1,22 @@
+{
+    "data": [
+      {
+        "target": [
+          {
+            "name": "electriccooker",
+            "positionY": 0,
+            "positionZ": 0,
+            "rotationX": 0,
+            "rotationY": 0,
+            "rotationZ": 0,
+            "scaleX": 0,
+            "scaleY": 0,
+            "scaleZ": 0,
+            "link": "https://thangunity.github.io/HustlePro/TargetAstronaut/Astronaut.jpg",
+            "android": "https://thangunity.github.io/HustlePro/TargetAstronaut/faboAndroid",
+            "ios": "https://thangunity.github.io/HustlePro/TargetAstronaut/faboIos"
+          }
+        ]
+      }
+    ]
+}
