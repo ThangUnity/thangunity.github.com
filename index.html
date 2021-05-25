@@ -8,14 +8,36 @@
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+	<script>
+	// Check whether this is an Android device.
+const isAndroid = /android/i.test(navigator.userAgent);
+// This fallback URL is used if the Google app is not installed and up to date.
+const fallbackUrl = 'https://arvr.google.com/scene-viewer?file=https%3A%2F%2Fstorage.googleapis.com%2Far-answers-in-search-models%2Fstatic%2FTiger%2Fmodel.glb&link=https%3A%2F%2Fgoogle.com&title=Tiger';
+
+// This intent URL triggers Scene Viewer on Android and falls back to
+// fallbackUrl if the Google app is not installed and up to date.
+const sceneViewerUrl = 'intent://arvr.google.com/scene-viewer/1.0?file=https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb&title=Tiger#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=' +
+    fallbackUrl + ';end;';
+
+// Create a link.
+var a = document.createElement('a');
+a.appendChild(document.createTextNode('Tiger'));
+// Set the href to the intent URL on Android and the fallback URL
+// everywhere else.
+a.href = isAndroid ? sceneViewerUrl : fallbackUrl;
+// Add the link to the page.
+document.body.appendChild(a);
+	</script>
   </head>
   <body>
    <!-- <scene view> HTML element change src file
 	- S.browser_fallback_url  Nếu không thể hiển thị mô hình 3D, chẳng hạn như do ứng dụng Google chưa được cài đặt hoặc là phiên bản cũ, S.browser_fallback_url tham số sẽ được sử dụng để hiển thị trang web dự phòng.
 	- file= Đường dẫn file glb, gltf
-   -->
+   
   <button onclick="window.location.href='intent://arvr.google.com/scene-viewer/1.0?file=https://thangunity.github.io/Glb_TV.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;'">Continue</button>
-    <!-- <model-viewer> HTML element change src file -->
+    -->
+	<a href="intent://arvr.google.com/scene-viewer/1.0?file=https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado.gltf&mode=ar_only#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;">Avocado</a>;
+	<!-- <model-viewer> HTML element change src file -->
     <model-viewer src="Glb_TV.glb" camera-controls ar>
       <div class="progress-bar hide" slot="progress-bar">
           <div class="update-bar"></div>
