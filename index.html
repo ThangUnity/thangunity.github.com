@@ -8,21 +8,10 @@
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
-	<script>
-Intent sceneViewerIntent = new Intent(Intent.ACTION_VIEW);
-Uri intentUri =
-    Uri.parse("https://arvr.google.com/scene-viewer/1.0").buildUpon()
-    .appendQueryParameter("file", "Glb_TV.glb")
-    .appendQueryParameter("mode", "ar_only")
-    .build();
-sceneViewerIntent.setData(intentUri);
-sceneViewerIntent.setPackage("com.google.ar.core");
-startActivity(sceneViewerIntent);
-</script>
   </head>
   <body>
    <!-- <scene view> HTML element change src file -->
-  <button onclick="window.location.href='intent://arvr.google.com/scene-viewer/1.1?file=https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado.gltf&mode=ar_only#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;'">Continue</button>
+  <button onclick="window.location.href='intent://arvr.google.com/scene-viewer/1.0?file=https://thangunity.github.io/Glb_TV.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;'">Continue</button>
     <!-- <model-viewer> HTML element change src file -->
     <model-viewer src="Glb_TV.glb" camera-controls ar>
       <div class="progress-bar hide" slot="progress-bar">
