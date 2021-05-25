@@ -10,7 +10,10 @@
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
   <body>
-   <!-- <scene view> HTML element change src file -->
+   <!-- <scene view> HTML element change src file
+	- S.browser_fallback_url  Nếu không thể hiển thị mô hình 3D, chẳng hạn như do ứng dụng Google chưa được cài đặt hoặc là phiên bản cũ, S.browser_fallback_url tham số sẽ được sử dụng để hiển thị trang web dự phòng.
+	- file= Đường dẫn file glb, gltf
+   -->
   <button onclick="window.location.href='intent://arvr.google.com/scene-viewer/1.0?file=https://thangunity.github.io/Glb_TV.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;'">Continue</button>
     <!-- <model-viewer> HTML element change src file -->
     <model-viewer src="Glb_TV.glb" camera-controls ar>
