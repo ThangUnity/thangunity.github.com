@@ -37,6 +37,11 @@
 		document.body.appendChild(a);
 	</script>
 	
+	<button
+      onclick="launchIOSQuickLookAR('https://thangunity.github.io/toy_biplane.usdz')"
+    >
+     IOS
+    </button>
 	
 	<script>
 	//function detectiOSARQuickLook
@@ -56,9 +61,16 @@
 		document.body.appendChild(a);
 	}
 	
+	function launchIOSQuickLookAR(usdzSrc) {
+  const anchor = document.createElement("a");
+  anchor.setAttribute("rel", "ar");
+  anchor.appendChild(document.createElement("img"));
+  anchor.setAttribute("href", usdzSrc);
+  anchor.click();
+}
 	</script>
 	
-thang
+
 	
 	<!-- Previewing a Model with AR Quick Look IOS
 	
