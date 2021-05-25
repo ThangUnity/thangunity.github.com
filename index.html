@@ -37,11 +37,11 @@
 		document.body.appendChild(a);
 	</script>
 	
-	<button
-      onclick="launchIOSQuickLookAR('https://thangunity.github.io/toy_biplane.usdz')"
-    >
-     IOS THANG
-    </button>
+	<!-- <button -->
+      <!-- onclick="launchIOSQuickLookAR('https://thangunity.github.io/toy_biplane.usdz')" -->
+    <!-- > -->
+     <!-- IOS THANG -->
+    <!-- </button> -->
 	
 	<script>
 	
@@ -52,16 +52,11 @@
 	const quicklookViewerUrl='https://thangunity.github.io/toy_biplane.usdz';
 	if(testAnchor.relList.supports("ar"))
 	{
-		// Create a link.
-		<!-- var a = document.createElement('a'); -->
-		 <!-- a.setAttribute('rel', 'ar'); -->
-		<!-- a.appendChild(document.createTextNode('Tiger')); -->
-		<!-- // Set the href to the intent URL on Android and the fallback URL -->
-		<!-- // everywhere else. -->
-		<!-- a.href = quicklookViewerUrl; -->
-		<!-- // Add the link to the page. -->
-		<!-- a.click(); -->
-		<!-- document.body.appendChild(a); -->
+		var x = document.createElement("BUTTON");
+		x.setAttribute('onclick', 'launchIOSQuickLookAR("'+quicklookViewerUrl+'")');
+		var t = document.createTextNode("Click me AR");
+		x.appendChild(t);
+		document.body.appendChild(x);
 	}
 	
 	function launchIOSQuickLookAR(usdzSrc) {
@@ -71,11 +66,7 @@
 	  anchor.setAttribute("href", usdzSrc);
 	  anchor.click();
 	}
-	var x = document.createElement("BUTTON");
-	x.setAttribute('onclick', 'launchIOSQuickLookAR("'+quicklookViewerUrl+'")');
-	var t = document.createTextNode("Click me AR");
-	x.appendChild(t);
-	document.body.appendChild(x);
+	
 	</script>
 	
 
