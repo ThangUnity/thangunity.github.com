@@ -19,26 +19,44 @@
   <button onclick="window.location.href='intent://arvr.google.com/scene-viewer/1.0?file=https://thangunity.github.io/Glb_TV.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;'">Continue</button>
     -->
 	<script>
-	// Check whether this is an Android device.
-const isAndroid = /android/i.test(navigator.userAgent);
-// This fallback URL is used if the Google app is not installed and up to date.
-const fallbackUrl = 'https://arvr.google.com/scene-viewer?file=https%3A%2F%2Fstorage.googleapis.com%2Far-answers-in-search-models%2Fstatic%2FTiger%2Fmodel.glb&link=https%3A%2F%2Fgoogle.com&title=Tiger';
-// This intent URL triggers Scene Viewer on Android and falls back to
-// fallbackUrl if the Google app is not installed and up to date.
-const sceneViewerUrl = 'intent://arvr.google.com/scene-viewer/1.0?file=https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb&title=Tiger&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=' +
-    fallbackUrl + ';end;';
-
-// Create a link.
-var a = document.createElement('a');
-a.appendChild(document.createTextNode('Tiger'));
-// Set the href to the intent URL on Android and the fallback URL
-// everywhere else.
-a.href = isAndroid ? sceneViewerUrl : fallbackUrl;
-// Add the link to the page.
-document.body.appendChild(a);
+		// Check whether this is an Android device.
+		const isAndroid = /android/i.test(navigator.userAgent);
+		// This fallback URL is used if the Google app is not installed and up to date.
+		const fallbackUrl = 'https://arvr.google.com/scene-viewer?file=https%3A%2F%2Fstorage.googleapis.com%2Far-answers-in-search-models%2Fstatic%2FTiger%2Fmodel.glb&link=https%3A%2F%2Fgoogle.com&title=Tiger';
+		// This intent URL triggers Scene Viewer on Android and falls back to
+		// fallbackUrl if the Google app is not installed and up to date.
+		const sceneViewerUrl = 'intent://arvr.google.com/scene-viewer/1.0?file=https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb&title=Tiger&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=' +
+			fallbackUrl + ';end;';
+		// Create a link.
+		var a = document.createElement('a');
+		a.appendChild(document.createTextNode('Tiger'));
+		// Set the href to the intent URL on Android and the fallback URL
+		// everywhere else.
+		a.href = isAndroid ? sceneViewerUrl : fallbackUrl;
+		// Add the link to the page.
+		document.body.appendChild(a);
 	</script>
 	
-	<a href="toy_biplane.usdz">iMessage toy_biplane</a>
+	
+	<script>
+	//function detectiOSARQuickLook
+	const testAnchor = document.createElement("a");
+	const quicklookViewerUrl='https://thangunity.github.io/toy_biplane.usdz';
+	if(testAnchor.relList.supports("ar"))
+	{
+		// Create a link.
+		var a = document.createElement('a');
+		 a.setAttribute('rel', 'ar');
+		a.appendChild(document.createTextNode('Tiger'));
+		// Set the href to the intent URL on Android and the fallback URL
+		// everywhere else.
+		a.href = quicklookViewerUrl;
+		// Add the link to the page.
+		document.body.appendChild(a);
+	}
+	</script>
+	
+
 	
 	<!-- Previewing a Model with AR Quick Look IOS
 	
