@@ -82,6 +82,34 @@
 	  div.appendChild(div1);
 	  document.body.appendChild(anchor);
 	</script>
+	
+	<ul id="myList">
+  <li>Coffee</li>
+  <li>Tea</li>
+</ul>
+	
+	<script>
+	navigator.xr.isSessionSupported( 'immersive-ar' ).then( function ( supported ) {
+
+                supported ? showStartAR() : showARNotSupported();
+
+            } ).catch( showARNotSupported );
+			
+			function showARNotSupported() {
+
+			console.log("Hello world!");
+
+		}
+		
+		function showStartAR() {
+
+			 var node = document.createElement("LI");
+  var textnode = document.createTextNode("Water");
+  node.appendChild(textnode);
+  document.getElementById("myList").appendChild(node);
+
+		}
+	</script>
 
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
