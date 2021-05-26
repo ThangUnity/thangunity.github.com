@@ -75,11 +75,25 @@
 	https://webkit.org/blog/8421/viewing-augmented-reality-assets-in-safari-for-ios/
 	-->
 	<!-- <model-viewer> HTML element change src file -->
+	<script>
+	  var anchor = document.createElement("model-viewer");
+	  anchor.setAttribute("src", "Glb_TV.glb"); // change glb file
+	  anchor.setAttribute("camera-controls","");
+	  var div = document.createElement("div");
+	  div.setAttribute("class", "progress-bar hide");
+	  div.setAttribute("slot", "progress-bar");
+	  anchor.appendChild(div);
+	  var div1 = document.createElement("div");
+	  div1.setAttribute("class", "update-bar");
+	  div.appendChild(div1);
+	  document.body.appendChild(anchor);
+	</script>
+	<!-- <model-viewer> HTML element change src file 
     <model-viewer src="Glb_TV.glb" camera-controls>
       <div class="progress-bar hide" slot="progress-bar">
           <div class="update-bar"></div>
       </div>
-    </model-viewer>  
+    </model-viewer>  -->
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
