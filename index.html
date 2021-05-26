@@ -15,9 +15,9 @@
       HTML element change src file
 	- S.browser_fallback_url  Nếu không thể hiển thị mô hình 3D, chẳng hạn như do ứng dụng Google chưa được cài đặt hoặc là phiên bản cũ, S.browser_fallback_url tham số sẽ được sử dụng để hiển thị trang web dự phòng.
 	- file= Đường dẫn file glb, gltf
+   -->
    
-  <button onclick="window.location.href='intent://arvr.google.com/scene-viewer/1.0?file=https://thangunity.github.io/Glb_TV.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;'">Continue</button>
-    -->
+   
 	<script>
 		// Check whether this is an Android device.
 		const isAndroid = /android/i.test(navigator.userAgent);
@@ -32,21 +32,17 @@
 		a.appendChild(document.createTextNode('Android'));
 		// Set the href to the intent URL on Android and the fallback URL
 		// everywhere else.
-		a.href = isAndroid ? sceneViewerUrl : fallbackUrl;
-		// Add the link to the page.
-		document.body.appendChild(a);
+		if(isAndroid)
+		{
+			a.href = sceneViewerUrl;
+			// Add the link to the page.
+			document.body.appendChild(a);
+		}
 	</script>
 	
-	<!-- <button -->
-      <!-- onclick="launchIOSQuickLookAR('https://thangunity.github.io/toy_biplane.usdz')" -->
-    <!-- > -->
-     <!-- IOS THANG -->
-    <!-- </button> -->
+
 	
 	<script>
-	
-	
-  
 	//function detectiOSARQuickLook 
 	const testAnchor = document.createElement("a");
 	const quicklookViewerUrl='https://thangunity.github.io/toy_biplane.usdz';
@@ -88,12 +84,7 @@
 	  div.appendChild(div1);
 	  document.body.appendChild(anchor);
 	</script>
-	<!-- <model-viewer> HTML element change src file 
-    <model-viewer src="Glb_TV.glb" camera-controls>
-      <div class="progress-bar hide" slot="progress-bar">
-          <div class="update-bar"></div>
-      </div>
-    </model-viewer>  -->
+
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
