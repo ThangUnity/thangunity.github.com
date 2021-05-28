@@ -26,7 +26,7 @@
 		const fallbackUrl = 'https://arvr.google.com/scene-viewer?file=https%3A%2F%2Fstorage.googleapis.com%2Far-answers-in-search-models%2Fstatic%2FTiger%2Fmodel.glb&link=https%3A%2F%2Fgoogle.com&title=Tiger';
 		// This intent URL triggers Scene Viewer on Android and falls back to
 		// fallbackUrl if the Google app is not installed and up to date.
-		const sceneViewerUrl = 'intent://arvr.google.com/scene-viewer/1.1?file=https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=' +
+		const sceneViewerUrl = 'intent://arvr.google.com/scene-viewer/1.0?file=https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=' +
 			fallbackUrl + ';end;';
 		// Create a link.
 		var a = document.createElement('a');
@@ -84,33 +84,7 @@
 	  document.body.appendChild(anchor);
 	</script>
 	
-	<ul id="myList">
-  <li>Coffee</li>
-  <li>Tea</li>
-</ul>
-	
-	<script>
-	navigator.xr.isSessionSupported( 'immersive-ar' ).then( function ( supported ) {
 
-                supported ? showStartAR() : showARNotSupported();
-
-            } ).catch( showARNotSupported );
-			
-			function showARNotSupported() {
-
-			console.log("Hello world!");
-
-		}
-		
-		function showStartAR() {
-
-			 var node = document.createElement("LI");
-  var textnode = document.createTextNode("Water");
-  node.appendChild(textnode);
-  document.getElementById("myList").appendChild(node);
-
-		}
-	</script>
 
     <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
