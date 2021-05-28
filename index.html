@@ -8,48 +8,38 @@
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
-	
-	<script src="ua-parser.min.js"></script>
-<script>
-
-    var parser = new UAParser();
-    console.log(parser.getResult());
-    /*
-        /// this will print an object structured like this:
-        {
-            ua: "",
-            browser: {
-                name: "",
-                version: "",
-                major: "" //@deprecated
-            },
-            engine: {
-                name: "",
-                version: ""
-            },
-            os: {
-                name: "",
-                version: ""
-            },
-            device: {
-                model: "",
-                type: "",
-                vendor: ""
-            },
-            cpu: {
-                architecture: ""
-            }
-        }
-    */
-	
-	console.log(parser.getResult().device.model)
-    // Default result depends on current window.navigator.userAgent value
-
-</script>
   </head>
   <body>
   <p id="p1">Hello World!</p>
+<script>
+	  const isAndroid = /android/i.test(navigator.userAgent);
+	  if(isAndroid)
+	  {
+		var str=navigator.userAgent;
+		var words =new Array('PIXEL', 'GALAXY J7', 'MI 8');
+		var value = new RegExp(words.join('|')).test(str);
+		if (value) 
+		{
+			const fallbackUrl = 'https://arvr.google.com/scene-viewer?file=https%3A%2F%2Fstorage.googleapis.com%2Far-answers-in-search-models%2Fstatic%2FTiger%2Fmodel.glb&link=https%3A%2F%2Fgoogle.com&title=Tiger';
+			// This intent URL triggers Scene Viewer on Android and falls back to
+			// fallbackUrl if the Google app is not installed and up to date.
+			const sceneViewerUrl = 'intent://arvr.google.com/scene-viewer/1.0?file=https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=' +
+				fallbackUrl + ';end;';
+			// Create a link.
+			var a = document.createElement('a');
+			a.appendChild(document.createTextNode('Android'));
+			// Set the href to the intent URL on Android and the fallback URL
+			// everywhere else.
+			
+			a.href = isAndroid ? sceneViewerUrl : fallbackUrl;
+			// Add the link to the page.
+			document.body.appendChild(a);
+		}
+		
+	  }
 
+		document.getElementById("p1").innerHTML = navigator.userAgent;
+</script>
 
    <!-- <scene view> https://developers.google.com/ar/develop/java/scene-viewer
       HTML element change src file
@@ -126,38 +116,11 @@
 	
 	
 	
-	<script>
-	  const isAndroid = /android/i.test(navigator.userAgent);
-	  if(isAndroid)
-	  {
-		var str=navigator.userAgent;
-		var words =new Array('PIXEL', 'GALAXY J7', 'MI 8');
-		var value = new RegExp(words.join('|')).test(str);
-		if (value) 
-		{
-			const fallbackUrl = 'https://arvr.google.com/scene-viewer?file=https%3A%2F%2Fstorage.googleapis.com%2Far-answers-in-search-models%2Fstatic%2FTiger%2Fmodel.glb&link=https%3A%2F%2Fgoogle.com&title=Tiger';
-			// This intent URL triggers Scene Viewer on Android and falls back to
-			// fallbackUrl if the Google app is not installed and up to date.
-			const sceneViewerUrl = 'intent://arvr.google.com/scene-viewer/1.0?file=https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=' +
-				fallbackUrl + ';end;';
-			// Create a link.
-			var a = document.createElement('a');
-			a.appendChild(document.createTextNode('Android'));
-			// Set the href to the intent URL on Android and the fallback URL
-			// everywhere else.
-			
-			a.href = isAndroid ? sceneViewerUrl : fallbackUrl;
-			// Add the link to the page.
-			document.body.appendChild(a);
-		}
-		
-	  }
-
-		document.getElementById("p1").innerHTML = navigator.userAgent;
+	
 
 
   
-	</script>
+
 	
 
 
