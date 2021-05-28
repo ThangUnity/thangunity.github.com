@@ -131,7 +131,9 @@
 	  if(isAndroid)
 	  {
 		var str=navigator.userAgent;
-		if (/ROG Phone|ROG Phone II|ROG Phone III|ROG Phone 5|Zenfone 6|Pixel|Galaxy J7|Mi 8/.test(str)) 
+		var words =new Array('PIXEL', 'GALAXY J7', 'MI 8');
+		var value = new RegExp(words.join('|')).test(str);
+		if (value) 
 		{
 			const fallbackUrl = 'https://arvr.google.com/scene-viewer?file=https%3A%2F%2Fstorage.googleapis.com%2Far-answers-in-search-models%2Fstatic%2FTiger%2Fmodel.glb&link=https%3A%2F%2Fgoogle.com&title=Tiger';
 			// This intent URL triggers Scene Viewer on Android and falls back to
