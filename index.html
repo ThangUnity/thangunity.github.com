@@ -16,14 +16,14 @@
 	  if(isAndroid)
 	  {
 		var str=navigator.userAgent;
-		var words =new Array('Pixel', 'SM-J730', 'MI 8');
-		var value = new RegExp(words.join('|')).test(str);
-		if (value) 
+		//var words =new Array('Pixel', 'SM-J730', 'MI 8');
+		//var value = new RegExp(words.join('|')).test(str);
+		//if (value) 
 		{
 			const fallbackUrl = 'https://arvr.google.com/scene-viewer?file=https%3A%2F%2Fstorage.googleapis.com%2Far-answers-in-search-models%2Fstatic%2FTiger%2Fmodel.glb&link=https%3A%2F%2Fgoogle.com&title=Tiger';
 			// This intent URL triggers Scene Viewer on Android and falls back to
 			// fallbackUrl if the Google app is not installed and up to date.
-			const sceneViewerUrl = 'intent://arvr.google.com/scene-viewer/1.0?file=https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=' +
+			const sceneViewerUrl = 'intent://arvr.google.com/scene-viewer/1.0?file=https://thangunity.github.io/RobotExpressive.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=' +
 				fallbackUrl + ';end;';
 			// Create a link.
 			var a = document.createElement('a');
@@ -48,29 +48,7 @@
 
    -->
    
-  <!--
-	<script>
-		// Check whether this is an Android device.
-		const isAndroid = /android/i.test(navigator.userAgent);
-		// This fallback URL is used if the Google app is not installed and up to date.
-		const fallbackUrl = 'https://arvr.google.com/scene-viewer?file=https%3A%2F%2Fstorage.googleapis.com%2Far-answers-in-search-models%2Fstatic%2FTiger%2Fmodel.glb&link=https%3A%2F%2Fgoogle.com&title=Tiger';
-		// This intent URL triggers Scene Viewer on Android and falls back to
-		// fallbackUrl if the Google app is not installed and up to date.
-		const sceneViewerUrl = 'intent://arvr.google.com/scene-viewer/1.0?file=https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=' +
-			fallbackUrl + ';end;';
-		// Create a link.
-		var a = document.createElement('a');
-		a.appendChild(document.createTextNode('Android'));
-		// Set the href to the intent URL on Android and the fallback URL
-		// everywhere else.
-		
-		a.href = isAndroid ? sceneViewerUrl : fallbackUrl;
-		// Add the link to the page.
-		document.body.appendChild(a);
-	</script>
-	-->
 
-	
 	<script>
 	//function detectiOSARQuickLook 
 	const testAnchor = document.createElement("a");
@@ -102,8 +80,10 @@
 	<!-- <model-viewer> HTML element change src file -->
 	<script>
 	  var anchor = document.createElement("model-viewer");
-	  anchor.setAttribute("src", "Glb_TV.glb"); // change glb file
+	  anchor.setAttribute("src", "RobotExpressive.glb"); // change glb file
 	  anchor.setAttribute("camera-controls","");
+	   anchor.setAttribute("autoplay","");
+	   anchor.setAttribute("shadow-intensity","1");
 	  var div = document.createElement("div");
 	  div.setAttribute("class", "progress-bar hide");
 	  div.setAttribute("slot", "progress-bar");
