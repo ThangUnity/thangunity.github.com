@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#fafafa" />
     <title>Volkswagen</title>
     <link rel="Stylesheet" href="style.css" type="text/css" />
-    <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.3.2.js"></script>
+   <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.0.js"></script>
     <script type="text/javascript" src="include/jquery-1.12.0.min.js"></script>
 </head>
 
@@ -285,14 +285,15 @@ thất</span>
             ];
            
 
-            paintMaterial = myMaterials[25];
-            paintMaterial.channels.AlbedoPBR.enable = true;
-            paintMaterial.channels.AlbedoPBR.factor = 1;
+           
+            
 
             if (paintMaterial == null || loadedApi == null) {
                 console.log("Api not loaded yet or failed.");
                 return;
             }
+			paintMaterial.channels.AlbedoPBR.enable = true;
+            paintMaterial.channels.AlbedoPBR.factor = 1;
             const linearColor = srgbToLinear(hexToRgb(colors[index]));
             paintMaterial.channels.AlbedoPBR.color = linearColor;
             paintMaterial.channels.AlbedoPBR.factor = intensity[index];
@@ -538,11 +539,9 @@ thất</span>
                         });
 
                         api.getMaterialList(function (err, materials) {
-                            
-                            myMaterials = materials;
-							leatherMaterial = myMaterials[28];
-                 
-
+							
+						    paintMaterial = materials[25];
+							leatherMaterial = materials[28];
                             api.getCameraLookAt(function (err, camera) {
                                 changeCamera(0);
                                 setTimeout(function () {
@@ -588,29 +587,23 @@ thất</span>
         $(document).ready(function(){
             loadmodel();
             currentColorText = $("#colorPicker .car-color.active").data("name");
-            if(parseInt($("#colorPicker .car-color.active").data("price")) != 0)
-                currentColorText += " £" + $("#colorPicker .car-color.active").data("price");
+           
             currentIntText = $("#colorPicker2 .int-color.active").data("name");
-            if(parseInt($("#colorPicker2 .int-color.active").data("price")) != 0)
-                currentIntText += " £" + $("#colorPicker2 .int-color.active").data("price");
+           
             $("#colorPicker span.info").text(currentColorText);
             $("#colorPicker2 span.info").text(currentIntText);
-            $("#totalPrice").text(writePrice(basePrice + option1Price + option2Price));
+           
             $(".car-color").click(function(){
                 var carColorIndex = $(this).data("color-id");
                 $(".car-color").removeClass("active");
                 $(this).addClass("active");
                 currentColorText = $(this).data("name");
-                if(parseInt($(this).data("price")) != 0)
-                    currentColorText += " £" + $(this).data("price");
-                option1Price = parseInt($(this).data("price"));
-                $("#totalPrice").text(writePrice(basePrice + option1Price + option2Price));
+                
                 changeCarColor(carColorIndex);
             });
             $(".car-color").hover(function(){
                 var newText = $(this).data("name");
-                if(parseInt($(this).data("price")) != 0)
-                    newText += " £" + $(this).data("price");
+                
                 $("#colorPicker span.info").text(newText);
             }, function(){
                 $("#colorPicker span.info").text(currentColorText);
@@ -621,16 +614,13 @@ thất</span>
                 $(".int-color").removeClass("active");
                 $(this).addClass("active");
                 currentIntText = $(this).data("name");
-                if (parseInt($(this).data("price")) != 0)
-                    currentIntText += " £" + $(this).data("price");
-                option2Price = parseInt($(this).data("price"));
-                $("#totalPrice").text(writePrice(basePrice + option1Price + option2Price));
+        
+               
                 changeInterior(intColorIndex);
             });
             $(".int-color").hover(function(){
                 var newText = $(this).data("name");
-                if(parseInt($(this).data("price")) != 0)
-                    newText += " £" + $(this).data("price");
+                
                 $("#colorPicker2 span.info").text(newText);
             }, function(){
                 $("#colorPicker2 span.info").text(currentIntText);
@@ -702,10 +692,7 @@ thất</span>
                 }
             });
         });
-        function writePrice(price) {
-            var price = price.toString().split("");
-            return "£" + price[0] + price[1] + "," + price[2] + price[3] + price[4];
-        }
+        
     </script>
 </body>
 
