@@ -311,7 +311,7 @@ thất</span>
         function changeLeatherColor(index) {
 
             
-            leatherMaterial = myMaterials[28]
+           
             if (leatherMaterial == null || loadedApi == null) {
                 console.log("Api not loaded yet or failed.");
                 return;
@@ -503,7 +503,7 @@ thất</span>
                         $apiFrame.classList.remove("iframe-hidden");
 
                         api.getAnimations(function (err, animations) {
-                            console.log(animations);
+                
                             api.setCurrentAnimationByUID(animations[0][0]);
                             api.setCycleMode('none');
                             api.pause();
@@ -538,13 +538,9 @@ thất</span>
                         });
 
                         api.getMaterialList(function (err, materials) {
-                            console.log(materials);
+                            
                             myMaterials = materials;
-							for (var i = 0; i < materials.length; i++) {
-                                if (materials[i].name == "interior_sixth") {
-                                    leatherMaterial = materials[i];
-                                }
-                            }
+							leatherMaterial = myMaterials[28];
                  
 
                             api.getCameraLookAt(function (err, camera) {
