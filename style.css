@@ -1,30 +1,23 @@
 @font-face {
-  font-family:AudiType-Extended;
-  src:url(fonts/AudiType-ExtendedNormal.ttf);
   font-weight:400;
 }
 
 @font-face {
-  font-family:AudiType-Extended;
-  src:url(fonts/AudiType-ExtendedBold.ttf);
   font-weight:700;
 }
 
 @font-face {
-  font-family:AudiType;
-  src:url(fonts/AudiTypeScreen-Normal.ttf);
+
   font-weight:400;
 }
 
 @font-face {
-  font-family:AudiType;
-  src:url(fonts/AudiTypeScreen-Light.ttf);
+
   font-weight:light;
 }
 
 @font-face {
-  font-family:AudiType;
-  src:url(fonts/AudiTypeScreen-Bold.ttf);
+
   font-weight:700;
 }
 
