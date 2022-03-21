@@ -26,7 +26,7 @@
     <div class="top">
         <div class="navigation">
             <div class="navigation__left">
-				<img  class="rings" id="myImage" src="images/logo/VW_nbdLogo_s_darkblue_digital_sRGB.svg"/>
+				<a href="http://showroom.vw.com.vn " ><img  class="rings" id="myImage" src="images/logo/VW_nbdLogo_s_darkblue_digital_sRGB.svg"/></a>
             </div>
             <div class="navigation__right" style="display: none;">
                 <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -62,6 +62,9 @@ thất</span>
 <span style="font-weight: 300; font-size: 16px;" class="descr small">
 Cá nhân hoá chất liệu bọc da mang đến trải nghiệm hoàn hảo cho cả hành trình dài</span>
     </div>
+	<div class="selector-box">
+            <span style="font-weight:bold; font-size: 23px;" class="car-feature price" >Giá từ 2,349,000,000 VND</span>
+        </div>
 </div>
     <div class="views" id="cameraPicker">
         <div>
@@ -114,21 +117,22 @@ Cá nhân hoá chất liệu bọc da mang đến trải nghiệm hoàn hảo ch
     </div>
 
     <div class="colors" id="colorPicker">
-		<div class="car-color" data-color-id="0" data-price="0">
-        <img src="images/paints/white.png" alt="Màu trắng">
+		<span class="info"></span>
+		<div class="car-color  active" data-color-id="0" data-name="Trắng Pure" data-price="0">
+        <img src="images/paints/white.png" alt="Trắng Pure">
         </div>
-        <div class="car-color active" data-color-id="1"  data-price="0">
-            <img src="images/paints/blue.png" alt="Màu xanh">
+        <div class="car-color" data-color-id="1"  data-name="Xanh Tourmaline" data-price="0">
+            <img src="images/paints/blue.png" alt="Xanh Tourmaline">
         </div>
-        <div class="car-color " data-color-id="2"  data-price="0">
-            <img src="images/paints/red.png" alt="Màu đỏ">
+        <div class="car-color " data-color-id="2"  data-name="Đỏ Aurora" data-price="0">
+            <img src="images/paints/red.png" alt="Đỏ Aurora">
         </div>
 
-        <div class="car-color" data-color-id="3"  data-price="0">
-            <img src="images/paints/black.png" alt="Màu đen">
+        <div class="car-color" data-color-id="3"  data-name="Đen Pearl" data-price="0">
+            <img src="images/paints/black.png" alt="Đen Pearl">
         </div>
-        <div class="car-color" data-color-id="4" data-price="0">
-            <img src="images/paints/grey.png" alt="Màu xám">
+        <div class="car-color" data-color-id="4"  data-name="Xám Platinum" data-price="0">
+            <img src="images/paints/grey.png" alt="Xám Platinum">
         </div>
     </div>
 
@@ -149,7 +153,7 @@ Cá nhân hoá chất liệu bọc da mang đến trải nghiệm hoàn hảo ch
         });
         var iframe = document.getElementById('api-frame');
 		
-        var urlid = '7f97bcaf50b04e1eaf903e3105123baf';
+        var urlid = 'aba697e897e54679bf6edb2a536a9b61';
         // var urlid = '319b10ac40014466a12bda0c5333f69b';
         var client = null;
         var loadedApi = null;
@@ -196,7 +200,7 @@ Cá nhân hoá chất liệu bọc da mang đến trải nghiệm hoàn hảo ch
         ]
         var intColors = [
             '#050404',
-            '#8E5726'
+            '#72401D'
         ]
 
         function srgbToLinear1(c) {
@@ -291,7 +295,15 @@ Cá nhân hoá chất liệu bọc da mang đến trải nghiệm hoàn hảo ch
             paintMaterial.channels.AlbedoPBR.factor = intensity[index];
             paintMaterial.channels.MetalnessPBR.factor = metalness[index];
             loadedApi.setMaterial(paintMaterial, function () {
-                $("body").css({ "background": colors[index] });
+			
+			var change = document.getElementById("meBaby");
+
+var m1= 'linear-gradient('+colors[index]+', white, '+colors[index]+')';
+
+var m2= 'radial-gradient(white,'+colors[index]+')';
+ document.body.style.backgroundImage =m2;
+
+               // $("body").css({ "background": colors[index] });
                 if (uiLight[index]) {
 				document.getElementById('myImage').src=img2;
                     if (!$("body").hasClass("light"))
@@ -448,8 +460,11 @@ Cá nhân hoá chất liệu bọc da mang đến trải nghiệm hoàn hảo ch
         function changeInterior(index) {
             changeLeatherColor(index);
 			changeChairColor(index);
-			$("body").css({ "background": colors[0] });
-              document.getElementById('myImage').src=img2;
+			
+var m1= 'linear-gradient('+colors[0]+', white, '+colors[0]+')';
+var m2= 'radial-gradient(white,'+colors[0]+')';
+document.body.style.backgroundImage =m2;
+              document.getElementById('myImage').src=img1;
                 
                     if ($("body").hasClass("light"))
                         $("body").removeClass("light");
@@ -512,7 +527,7 @@ Cá nhân hoá chất liệu bọc da mang đến trải nghiệm hoàn hảo ch
                     api.load();
                     api.start();
                     nextprc = 80;
-
+					currentCamera=0;
 
                     api.addEventListener('viewerready', function () {
                         nextprc = 99;
@@ -534,41 +549,47 @@ Cá nhân hoá chất liệu bọc da mang đến trải nghiệm hoàn hảo ch
                             vignetteEnable: false
                         });
 
-                        api.addEventListener('camerastop', function () {
-                            api.getCameraLookAt(function (err, camera) {
-                                var camTarget = camera.target;
-                                switch (currentCamera) {
-                                    case 0:
-                                        if (camTarget[0] != cameraTarget[0] || camTarget[1] != cameraTarget[1] || camTarget[2] != cameraTarget[2])
-                                            changeCamera(0, true);
-                                        break;
-                                    case 1:
-                                        if (camTarget[0] != cameraHeadTarget[0] || camTarget[1] != cameraHeadTarget[1] || camTarget[2] != cameraHeadTarget[2])
-                                            changeCamera(1, true);
-                                        break;
-                                    case 2:
-                                        if (camTarget[0] != cameraHeadTarget2[0] || camTarget[1] != cameraHeadTarget2[1] || camTarget[2] != cameraHeadTarget2[2])
-                                            changeCamera(2, true);
-                                        break;
-                                    default:
-                                        console.log("Wrong camera index!");
-                                        break;
-                                }
-                            });
-                        });
+                        <!-- api.addEventListener('camerastop', function () { -->
+                            <!-- api.getCameraLookAt(function (err, camera) { -->
+                                <!-- var camTarget = camera.target; -->
+								<!-- console.log("camerastop"); -->
+                                <!-- switch (currentCamera) { -->
+                                    <!-- case 0: -->
+                                        <!-- if (camTarget[0] != cameraTarget[0] || camTarget[1] != cameraTarget[1] || camTarget[2] != cameraTarget[2]) -->
+                                            <!-- changeCamera(0, false); -->
+                                        <!-- break; -->
+                                    <!-- case 1: -->
+                                        <!-- if (camTarget[0] != cameraHeadTarget[0] || camTarget[1] != cameraHeadTarget[1] || camTarget[2] != cameraHeadTarget[2]) -->
+                                            <!-- changeCamera(1, false); -->
+                                        <!-- break; -->
+                                    <!-- case 2: -->
+                                        <!-- if (camTarget[0] != cameraHeadTarget2[0] || camTarget[1] != cameraHeadTarget2[1] || camTarget[2] != cameraHeadTarget2[2]) -->
+                                            <!-- changeCamera(2, false); -->
+                                        <!-- break; -->
+                                    <!-- default: -->
+                                        <!-- console.log("Wrong camera index!"); -->
+                                        <!-- break; -->
+                                <!-- } -->
+                            <!-- }); -->
+                        <!-- }); -->
 
                         api.getMaterialList(function (err, materials) {
 							console.log(materials);
-							leatherMaterial = materials[10];
-						    paintMaterial = materials[25];
-						
-							chairMaterial=materials[21];
+							leatherMaterial = materials[41];
+						    paintMaterial = materials[27];
+							chairMaterial=materials[19];
+							if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+								cameraPosition = [-1100, 40, 0];
+								console.log("set in mobile");
+							}
+							
+							 loadedApi.seekTo(0);
+							 loadedApi.pause();
+							 changeCamera(0);
                             api.getCameraLookAt(function (err, camera) {
 							
-							if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-								cameraPosition = [-1000, 40, 0];
-							}
-                                changeCamera(0);
+							
+                                
                                 setTimeout(function () {
                                     nextprc = 100;
                                     changeCarColor(0);
@@ -590,20 +611,22 @@ Cá nhân hoá chất liệu bọc da mang đến trải nghiệm hoàn hảo ch
                 },
                 graph_optimizer: 1,
                 ui_animations: 0,
-                ui_annotations: 0,
+                //ui_annotations: 0,
                 ui_general_controls: 0,
                // ui_watermark_link: 0,
                 ui_watermark: 0,
                 ui_infos: 0,
                 ui_stop: 0,
                 transparent: 1,
-               // camera: 0,
+                camera: 0,
+				max_texture_size: 2048,
+				
                // scrollwheel: 1,
-                //preload: 1,
-                double_click: 0,
+                preload: 0,
+                //double_click: 0,
 				orbit_constraint_pitch_down: 0,
 				orbit_constraint_zoom_in: 0,
-				orbit_constraint_zoom_out: 1200
+				orbit_constraint_zoom_out: 1500
                
             });
         }
@@ -652,7 +675,7 @@ Cá nhân hoá chất liệu bọc da mang đến trải nghiệm hoàn hảo ch
             $(".camera").click(function(){
                 currentCamera = $(this).data("cam-id");
                 console.log("Change camera " + currentCamera);
-                changeCamera(currentCamera);
+                changeCamera(currentCamera,true);
             });
             $(".selector-box span:first-child").click(function(){
                 var btn = $(this);
@@ -661,6 +684,7 @@ Cá nhân hoá chất liệu bọc da mang đến trải nghiệm hoàn hảo ch
                     btn.addClass("active");
                     if(btn.attr("id") == "colors" && !$("#colorPicker").hasClass("active")){
                         currentCamera = 0;
+						changeCarColor(0);
                         changeCamera(currentCamera);
                         $("#colorPicker").addClass("active");
                     } else if(btn.attr("id") != "colors" && $("#colorPicker").hasClass("active"))
@@ -676,6 +700,10 @@ Cá nhân hoá chất liệu bọc da mang đến trải nghiệm hoàn hảo ch
             });
             $("#openDoor").click(function () {
 			 console.log("click open door "+animationRunning);
+			 if (loadedApi == null) {
+                console.log("Api not loaded yet or failed.");
+                return;
+            }
                 if (animationRunning)
                     return;
                 if (doorOpened) {

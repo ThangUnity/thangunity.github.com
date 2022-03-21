@@ -298,8 +298,6 @@ p {
 
 .colors div.active {
   border-bottom:1px solid #242424;
-  padding:2px;
-  padding-bottom:0;
 }
 
 .colors span {
@@ -467,7 +465,7 @@ p {
     margin-bottom:10px;
   }
   .colors span.info {
-    ;
+     display: none !important;
   }
 }
 
